@@ -10,12 +10,21 @@ import {
 export class FormaSaludo extends Component {
 
   alEnviarForma = e => {
+    let datos = {};
     const nombre = e.target.nombre.value;
+    const msj = e.target.mensaje.value;
     e.preventDefault();
     if (typeof nombre ==="string" && nombre.length> 0){
-      this.props.alObtenerNuevoNombre(nombre);
+      datos.nombre = nombre;
       e.target.nombre.value = "";
     }
+
+    if (typeof msj ==="string" && msj.length> 0){
+      datos.msj = msj;
+      e.target.mensaje.value = "";
+    }
+
+    this.props.alObtenerNuevoSaludo(datos);
   }
 
   render() {
@@ -24,8 +33,13 @@ export class FormaSaludo extends Component {
         <FormGroup>
           <ControlLabel>Nombre</ControlLabel>
           <FormControl type="text" id="nombre" name="nombre"/>
-          <Button type="submit">Saludar</Button>
         </FormGroup>
+        <FormGroup>
+          <ControlLabel>Mensaje</ControlLabel>
+          <FormControl componentClass="textarea" id="mensaje" name="mensaje"/>
+        </FormGroup>
+          <Button type="submit">Saludar</Button>
+        
       </form>
     )
   }
