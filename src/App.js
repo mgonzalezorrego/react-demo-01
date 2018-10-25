@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Grid, FormGroup, ControlLabel, FormControl, Button } from "react-bootstrap";
+import { Grid } from "react-bootstrap";
+import { MensajeSaludo } from "./MensajeSaludo";
+import { FormaSaludo} from "./FormaSaludo"
 
 export class App extends Component {
   state = {
@@ -17,6 +19,11 @@ export class App extends Component {
     }
   };
 
+  manejarNuevoNombre = nombre => {
+    this.setState({
+      nombre: nombre
+    })
+  }
 
   render() {
     const { nombre } = this.state;
@@ -24,15 +31,8 @@ export class App extends Component {
     //const { nombre, msj } = this.props;
     return (
       <Grid>
-        <h1>Hola {nombre}! </h1>
-        <p>{msj} </p>
-        <form onSubmit={this.PresionarBoton}>
-          <FormGroup>
-            <ControlLabel>Nombre</ControlLabel>
-            <FormControl type="text" id="nombre" name="nombre"/>
-            <Button type="submit">Saludar</Button>
-          </FormGroup>
-        </form>
+        <MensajeSaludo nombre={nombre} msj={msj} />
+        <FormaSaludo alObtenerNuevoNombre={this.manejarNuevoNombre}/>
       </Grid>
     );
   }
