@@ -12,9 +12,17 @@ export class Menu extends Component {
                     href="/" 
                     to="/" 
                     active={window.location.pathname === "/"}
-                >
-                    Inicio
+                >Inicio
                 </NavItem>
+
+                <NavItem 
+                    componentClass={Link} 
+                    href="/saludar" 
+                    to="/saludar" 
+                    active={window.location.pathname === "/saludar"}
+                >Saludar
+                </NavItem>
+
                 <NavItem 
                     componentClass={Link} 
                     href="/peliculas" 

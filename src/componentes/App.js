@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Route from "react-router-dom/Route";
+import { Inicio } from "./Inicio"
 import { Saludo } from "./Saludo/index";
 import { Pelicula }  from "./Pelicula";
 import { Menu } from "./Menu";
@@ -13,7 +14,8 @@ export class App extends Component {
         <div>
           <Menu />
           <Switch> 
-            <Route path="/" component={Saludo} exact />
+            <Route path="/" component={Inicio} exact />
+            <Route path="/Saludar" component={Saludo} exact />
             <Route path="/peliculas" component={Pelicula} />
             <Route component={PaginaNoExiste} />
           </Switch>
